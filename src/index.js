@@ -41,9 +41,9 @@ const Input = props => (
       borderTop: 0,
       borderLeft: 0,
       borderRight: 0,
-      borderBottom: "1px solid " + colors.yellow[300],
-      background: "transparent",
-      color: colors.yellow[300],
+      borderBottom: "1px solid black",
+      background: colors.yellow[300],
+      color: "black",
       fontWeight: "bold"
     }}
   />
