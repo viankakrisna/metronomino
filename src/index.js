@@ -37,13 +37,19 @@ const Input = props => (
       ...props.style,
       height: 32,
       minWidth: 0,
-      width: "auto"
+      width: "auto",
+      borderTop: 0,
+      borderLeft: 0,
+      borderRight: 0,
+      borderBottom: "1px solid " + colors.yellow[300],
+      background: "transparent",
+      color: colors.yellow[300],
+      fontWeight: "bold"
     }}
   />
 );
 
-const synth = new Tone.Synth().toMaster();
-const synth2 = new Tone.Synth().toMaster();
+const synths = Array.from({ length: 5 }).map(() => new Tone.Synth().toMaster());
 
 function App() {
   const [beatTop, setBeatTop] = useState(4);
@@ -55,10 +61,10 @@ function App() {
   }, (60 * 1000) / BPM);
   useEffect(() => {
     if (count) {
-      synth.triggerAttackRelease("C4", "64n");
+      synths[0].triggerAttackRelease("C4", "64n");
       navigator.vibrate(60);
     } else {
-      synth2.triggerAttackRelease("G4", "64n");
+      synths[0].triggerAttackRelease("G4", "64n");
       navigator.vibrate(90);
     }
   }, [count]);
